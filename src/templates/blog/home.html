@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Blog de robótica | Artículos recientes{% endblock %}
+
+{% block content %}
+  <section aria-labelledby="page-title">
+    <div class="intro">
+      <p class="eyebrow">Ideas, máquinas y movimiento</p>
+      <h1 id="page-title">Artículos recientes</h1>
+      <p>Descubre historias y conocimientos del mundo de la robótica.</p>
+    </div>
+
+    {% if articles %}
+      <div class="article-grid">
+        {% for article in articles %}
+          <article class="article-card">
+            <a class="article-image-link" href="{{ article.get_absolute_url }}" aria-label="Leer {{ article.title }}">
+              <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-image">
+            </a>
+            <div class="article-card-content">
+              <p class="article-date">
+                <time datetime="{{ article.publication_date|date:'c' }}">{{ article.publication_date|date:"j \d\e F \d\e Y" }}</time>
+              </p>
+              <h2><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h2>
+              <p class="article-excerpt">{{ article.excerpt }}</p>
+              <a class="read-more" href="{{ article.get_absolute_url }}">Leer artículo <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty-state" role="status">Todavía no hay artículos publicados. ¡Vuelve pronto para descubrir novedades sobre robótica!</p>
+    {% endif %}
+  </section>
+{% endblock %}

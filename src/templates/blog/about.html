@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Sobre mí | Blog de robótica{% endblock %}
+
+{% block content %}
+  <article class="about-page" aria-labelledby="page-title">
+    <p class="eyebrow">Quién escribe</p>
+    <h1 id="page-title">Sobre mí</h1>
+    <div class="article-body">{{ page.content|linebreaks }}</div>
+  </article>
+{% endblock %}

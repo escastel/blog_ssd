@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load content_formatting %}
+
+{% block title %}{{ article.title }} | Blog de robótica{% endblock %}
+
+{% block content %}
+  <article class="article-detail">
+    <a class="back-link" href="{% url 'home' %}">← Volver a los artículos</a>
+    <header class="article-detail-header">
+      <p class="article-date">
+        <time datetime="{{ article.publication_date|date:'c' }}">{{ article.publication_date|date:"j \d\e F \d\e Y" }}</time>
+        <span aria-hidden="true"> · </span>{{ article.author }}
+      </p>
+      <h1>{{ article.title }}</h1>
+      <p class="article-excerpt">{{ article.excerpt }}</p>
+    </header>
+    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="detail-image">
+    <div class="article-body">{{ article.content|article_content }}</div>
+  </article>
+{% endblock %}

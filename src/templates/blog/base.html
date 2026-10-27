@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Artículos y novedades sobre robótica.">
+  <title>{% block title %}Blog de robótica{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'blog/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="{% url 'home' %}">Blog de robótica</a>
+    <nav aria-label="Navegación principal">
+      <ul class="site-navigation">
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'about' %}">Sobre mí</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="page-content">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <p>Un espacio para explorar el mundo de la robótica.</p>
+  </footer>
+</body>
+</html>
